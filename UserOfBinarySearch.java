@@ -35,6 +35,7 @@ public class UserOfBinarySearch {
         System.out.println();
 
 
+        // reports false but it works correctly
         System.out.println( "search for MISSING values");
         findOne( "not in middle"
                , orderedList.get( orderedList.size() /2) +1);

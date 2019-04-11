@@ -10,6 +10,7 @@ public class OrderedList_inArraySlots
     implements OrderedList {
 
     private java.util.ArrayList<Integer> list_iAS;
+    private int checkR;
 
 
     /**
@@ -18,7 +19,29 @@ public class OrderedList_inArraySlots
               \findMe is absent from this list.
      */
     public int indexOf( Integer findMe) {
-        return -1;
+      // return indexOf_whileStlye(findMe);
+      return indexOf_recursiveStyle(findMe, 0, size() - 1);
+    }
+
+    private int indexOf_whileStlye( Integer findMe) {
+        int low = 0;
+        int high = size() - 1;
+        int check = 0;
+        while (low <= high) {
+          check = (high + low) / 2;
+          if (get(check) == findMe) { break;}
+          else if (get(check) > findMe) { high = check - 1;}
+          else { low = check + 1;}
+        }
+        return check;
+    }
+
+    private int indexOf_recursiveStyle( Integer findMe, int low, int high) {
+        if (low > high) { return checkR;}
+        checkR = (high + low) / 2;
+        if (get(checkR) == findMe) { return checkR;}
+        else if (get(checkR) > findMe) { return indexOf_recursiveStyle( findMe, low, checkR - 1);}
+        else { return indexOf_recursiveStyle( findMe, checkR + 1, high);}
     }
     
 
